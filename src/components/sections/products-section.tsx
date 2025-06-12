@@ -1,13 +1,13 @@
-import type { Product } from '@/types/products'
-import type { FunctionComponent } from 'react'
-import CardSkeleton from '../card-skeleton'
-import ProductCard from '../product-card'
+import type { Product } from '@/types/products';
+import type { FunctionComponent } from 'react';
+import CardSkeleton from '../card-skeleton';
+import ProductCard from '../product-card';
 
 interface ProductsSectionProps {
-  products: Product[] | undefined
-  isLoading: boolean
-  isError: boolean
-  error: Error | null
+  products: Product[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  error: Error | null;
 }
 
 const ProductsSection: FunctionComponent<ProductsSectionProps> = ({ products, isLoading, isError, error }) => {
@@ -18,11 +18,11 @@ const ProductsSection: FunctionComponent<ProductsSectionProps> = ({ products, is
           <CardSkeleton key={index} />
         ))}
       </div>
-    )
+    );
   }
 
   if (isError) {
-    return <div>Error: {error?.message}</div>
+    return <div>Error: {error?.message}</div>;
   }
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -30,7 +30,7 @@ const ProductsSection: FunctionComponent<ProductsSectionProps> = ({ products, is
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProductsSection
+export default ProductsSection;

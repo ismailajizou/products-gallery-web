@@ -1,6 +1,4 @@
-import type { FunctionComponent } from 'react'
-
-
+import type { FunctionComponent } from 'react';
 
 const CardSkeleton: FunctionComponent = () => {
   return (
@@ -40,7 +38,7 @@ const CardSkeleton: FunctionComponent = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CardSkeleton
+export default CardSkeleton;

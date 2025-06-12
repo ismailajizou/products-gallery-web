@@ -1,9 +1,9 @@
-import type { Product } from '@/types/products'
-import type { FunctionComponent } from 'react'
-import { Heart } from 'lucide-react'
+import type { Product } from '@/types/products';
+import type { FunctionComponent } from 'react';
+import { Heart } from 'lucide-react';
 
 interface ProductCardProps {
-  product: Product
+  product: Product;
 }
 
 const ProductCard: FunctionComponent<ProductCardProps> = ({ product }) => {
@@ -38,7 +38,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ product }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;
