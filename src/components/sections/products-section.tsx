@@ -1,16 +1,23 @@
-import type { Product } from '@/types/products';
+import type { Product, ProductWithIsFavorite } from '@/types/products';
 import type { FunctionComponent } from 'react';
 import CardSkeleton from '../card-skeleton';
 import ProductCard from '../product-card';
 
 interface ProductsSectionProps {
-  products: Product[] | undefined;
+  products: ProductWithIsFavorite[] | undefined;
   isLoading: boolean;
   isError: boolean;
-  error: Error | null;
+  error: string | null;
+  toggleFavorite: (product: Product) => void;
 }
 
-const ProductsSection: FunctionComponent<ProductsSectionProps> = ({ products, isLoading, isError, error }) => {
+const ProductsSection: FunctionComponent<ProductsSectionProps> = ({
+  products,
+  isLoading,
+  isError,
+  error,
+  toggleFavorite,
+}) => {
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -22,12 +29,16 @@ const ProductsSection: FunctionComponent<ProductsSectionProps> = ({ products, is
   }
 
   if (isError) {
-    return <div>Error: {error?.message}</div>;
+    return <div>Error: {error}</div>;
   }
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products!.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          toggleFavorite={toggleFavorite}
+        />
       ))}
     </div>
   );
