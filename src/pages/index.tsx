@@ -4,15 +4,16 @@ import { CATEGORIES, SORT_OPTIONS } from '@/lib/constants';
 import type { Sort } from '@/types/products';
 
 const Home = () => {
-  const { state, setCategory, setSort, setSearch, toggleFavorite } = useProducts();
+  const { state, setCategory, setSort, setSearch, toggleFavorite } =
+    useProducts();
 
   return (
-    <main className="container mx-auto py-10 px-2 md:px-4">
+    <main className="container mx-auto px-2 py-10 md:px-4">
       <h1 className="text-2xl font-bold">Products</h1>
 
       {/* filter by category & sort by price */}
-      <div className="mb-4 flex flex-col gap-4 md:flex-row w-full">
-        <div className="flex flex-col gap-2 w-full">
+      <div className="mb-4 flex w-full flex-col gap-4 md:flex-row">
+        <div className="flex w-full flex-col gap-2">
           <label htmlFor="search">Search</label>
           <input
             id="search"

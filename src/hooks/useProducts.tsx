@@ -3,8 +3,11 @@ import type { Product, ProductWithIsFavorite, Sort } from '@/types/products';
 import { useEffect, useReducer } from 'react';
 
 type Action =
-  | { type: 'SET_INITIAL_PRODUCTS'; payload: (Product & { isFavorite: boolean })[] }
-  | { 
+  | {
+      type: 'SET_INITIAL_PRODUCTS';
+      payload: (Product & { isFavorite: boolean })[];
+    }
+  | {
       type: 'SET_CATEGORY';
       payload: { category: string; products: ProductWithIsFavorite[] };
     }
@@ -111,18 +114,25 @@ const useProducts = () => {
       });
   }, []);
 
-  const applyFiltersAndSort = (products: ProductWithIsFavorite[], category: string, search: string, sort: Sort) => {
+  const applyFiltersAndSort = (
+    products: ProductWithIsFavorite[],
+    category: string,
+    search: string,
+    sort: Sort,
+  ) => {
     let filteredProducts = [...products];
 
     // Apply category filter
     if (category) {
-      filteredProducts = filteredProducts.filter(product => product.category === category);
+      filteredProducts = filteredProducts.filter(
+        product => product.category === category,
+      );
     }
 
     // Apply search filter
     if (search) {
-      filteredProducts = filteredProducts.filter(product => 
-        product.title.toLowerCase().includes(search.toLowerCase())
+      filteredProducts = filteredProducts.filter(product =>
+        product.title.toLowerCase().includes(search.toLowerCase()),
       );
     }
 
@@ -138,7 +148,12 @@ const useProducts = () => {
   };
 
   const setCategory = (category: string) => {
-    const filteredProducts = applyFiltersAndSort(state.initialProducts, category, state.search, state.sort);
+    const filteredProducts = applyFiltersAndSort(
+      state.initialProducts,
+      category,
+      state.search,
+      state.sort,
+    );
 
     dispatch({
       type: 'SET_CATEGORY',
@@ -150,8 +165,13 @@ const useProducts = () => {
   };
 
   const setSort = (sort: Sort) => {
-    const filteredProducts = applyFiltersAndSort(state.initialProducts, state.category, state.search, sort);
-    
+    const filteredProducts = applyFiltersAndSort(
+      state.initialProducts,
+      state.category,
+      state.search,
+      sort,
+    );
+
     dispatch({
       type: 'SET_SORT',
       payload: { sort, products: filteredProducts },
@@ -159,7 +179,12 @@ const useProducts = () => {
   };
 
   const setSearch = (search: string) => {
-    const filteredProducts = applyFiltersAndSort(state.initialProducts, state.category, search, state.sort);
+    const filteredProducts = applyFiltersAndSort(
+      state.initialProducts,
+      state.category,
+      search,
+      state.sort,
+    );
 
     dispatch({
       type: 'SET_SEARCH',
@@ -173,7 +198,7 @@ const useProducts = () => {
   const toggleFavorite = (product: Product) => {
     const updatedProduct = {
       ...product,
-      isFavorite: !state.products.find(p => p.id === product.id)?.isFavorite
+      isFavorite: !state.products.find(p => p.id === product.id)?.isFavorite,
     };
     dispatch({ type: 'SET_FAVORITES', payload: updatedProduct });
   };
