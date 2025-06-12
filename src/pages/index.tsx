@@ -1,7 +1,9 @@
+import CategorySelect from '@/components/category-select';
+import SearchBar from '@/components/search-bar';
 import ProductsSection from '@/components/sections/products-section';
+import SortSelect from '@/components/sort-select';
 import useProducts from '@/hooks/useProducts';
 import { CATEGORIES, SORT_OPTIONS } from '@/lib/constants';
-import type { Sort } from '@/types/products';
 
 const Home = () => {
   const { state, setCategory, setSort, setSearch, toggleFavorite } =
@@ -9,48 +11,29 @@ const Home = () => {
 
   return (
     <main className="container mx-auto px-2 py-10 md:px-4">
-      <h1 className="text-2xl font-bold">Products</h1>
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Products</h1>
+        <p className="text-gray-600">Discover our amazing collection of products</p>
+      </div>
 
-      {/* filter by category & sort by price */}
-      <div className="mb-4 flex w-full flex-col gap-4 md:flex-row">
-        <div className="flex w-full flex-col gap-2">
-          <label htmlFor="search">Search</label>
-          <input
-            id="search"
-            className="w-full rounded-md border border-gray-300 p-2"
+      {/* Enhanced filter section */}
+      <div className="mb-8 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">Filter & Search</h2>
+        <div className="flex w-full flex-col gap-4 lg:flex-row">
+          <SearchBar
             value={state.search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={setSearch}
           />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="category">Category</label>
-          <select
-            id="category"
-            className="w-full rounded-md border border-gray-300 p-2"
+          <CategorySelect
             value={state.category}
-            onChange={e => setCategory(e.target.value)}
-          >
-            {CATEGORIES.map(category => (
-              <option key={category.value} value={category.value}>
-                {category.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="sort">Sort by</label>
-          <select
-            id="sort"
-            className="w-full rounded-md border border-gray-300 p-2"
+            onChange={setCategory}
+            categories={CATEGORIES}
+          />
+          <SortSelect
             value={state.sort}
-            onChange={e => setSort(e.target.value as Sort)}
-          >
-            {SORT_OPTIONS.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+            onChange={setSort}
+            sortOptions={SORT_OPTIONS}
+          />
         </div>
       </div>
 

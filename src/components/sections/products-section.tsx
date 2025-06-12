@@ -29,7 +29,12 @@ const ProductsSection: FunctionComponent<ProductsSectionProps> = ({
   }
 
   if (isError) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="flex flex-col items-center justify-center gap-4 p-6 bg-red-50 border border-red-200 rounded-lg">
+        <h1 className="text-2xl font-bold text-red-700">Error</h1>
+        <p className="text-red-600">{error}</p>
+      </div>
+    );
   }
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
