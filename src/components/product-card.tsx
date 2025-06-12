@@ -17,7 +17,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ product }) => {
       <div className="flex flex-col">
         {/* Product Image */}
         <div className="relative mb-3">
-          <img src={product.image} alt={product.title} className="h-48 w-full rounded-lg object-cover" />
+          <img src={product.image} alt={product.title} className="h-48 w-full rounded-lg object-contain" />
         </div>
 
         {/* Product Info */}
