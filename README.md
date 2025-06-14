@@ -247,7 +247,6 @@ Displays individual product information with:
 
 - **Enhanced Styling**: Improve the overall visual design with better color schemes, shadows, and animations
 - **Advanced Animations**: Add smooth transitions for filtering, sorting, and favorites
-- **Better Loading States**: More sophisticated loading animations and progressive loading
 - **Dark Mode**: Implement dark mode support with theme switching
 - **Image Optimization**: Add image lazy loading and placeholder improvements
 - **Mobile UX**: Enhanced mobile experience with touch gestures and better responsive breakpoints
@@ -265,5 +264,3 @@ Displays individual product information with:
 
 - **Code Splitting**: Implement route-based code splitting
 - **Memoization**: Add React.memo and useMemo where appropriate
-- **Virtual Scrolling**: For handling large product lists
-- **Image Optimization**: WebP format support and responsive images
