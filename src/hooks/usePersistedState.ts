@@ -8,7 +8,7 @@ export const usePersistedState = <T>(key: string, initialValue: T) => {
 
   const persistState = (value: SetStateAction<T>) => {
     let newValue: T;
-    
+
     if (typeof value === 'function') {
       // Handle functional update pattern
       newValue = (value as (prevState: T) => T)(state);
@@ -16,7 +16,7 @@ export const usePersistedState = <T>(key: string, initialValue: T) => {
       // Handle direct value
       newValue = value;
     }
-    
+
     setState(newValue);
     localStorage.setItem(key, JSON.stringify(newValue));
   };

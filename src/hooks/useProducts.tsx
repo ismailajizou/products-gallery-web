@@ -110,7 +110,7 @@ const useProducts = () => {
   }, []);
 
   const applyFiltersAndSort = (
-      products: Product[],
+    products: Product[],
     category: string,
     search: string,
     sort: Sort,
