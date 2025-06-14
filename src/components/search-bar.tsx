@@ -9,7 +9,7 @@ interface SearchBarProps {
 const SearchBar: FunctionComponent<SearchBarProps> = ({
   value,
   onChange,
-  placeholder = "Search by name or description...",
+  placeholder = 'Search by name or description...',
 }) => {
   return (
     <div className="flex w-full flex-col gap-2">
@@ -19,7 +19,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({
       <input
         id="search"
         placeholder={placeholder}
-        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-colors"
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
         value={value}
         onChange={e => onChange(e.target.value)}
       />
@@ -27,4 +27,4 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({
   );
 };
 
-export default SearchBar; 
+export default SearchBar;

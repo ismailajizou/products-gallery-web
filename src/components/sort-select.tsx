@@ -18,13 +18,13 @@ const SortSelect: FunctionComponent<SortSelectProps> = ({
   sortOptions,
 }) => {
   return (
-    <div className="flex flex-col gap-2 min-w-[200px]">
+    <div className="flex min-w-[200px] flex-col gap-2">
       <label htmlFor="sort" className="text-sm font-medium text-gray-700">
         Sort By
       </label>
       <select
         id="sort"
-        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-colors bg-white"
+        className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
         value={value}
         onChange={e => onChange(e.target.value as Sort)}
       >
@@ -38,4 +38,4 @@ const SortSelect: FunctionComponent<SortSelectProps> = ({
   );
 };
 
-export default SortSelect; 
+export default SortSelect;

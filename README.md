@@ -74,14 +74,14 @@ The application will be available at `http://localhost:5173`
 
 ## 📜 Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `yarn dev` | Start development server |
-| `yarn build` | Build for production |
-| `yarn preview` | Preview production build locally |
-| `yarn lint` | Run ESLint |
-| `yarn lint:fix` | Fix ESLint issues automatically |
-| `yarn format` | Format code with Prettier |
+| Script          | Description                      |
+| --------------- | -------------------------------- |
+| `yarn dev`      | Start development server         |
+| `yarn build`    | Build for production             |
+| `yarn preview`  | Preview production build locally |
+| `yarn lint`     | Run ESLint                       |
+| `yarn lint:fix` | Fix ESLint issues automatically  |
+| `yarn format`   | Format code with Prettier        |
 
 ## 🏗 Project Structure
 
@@ -121,6 +121,7 @@ The application expects a REST API with the following endpoint:
 - `GET /products` - Returns an array of products
 
 Expected product data structure:
+
 ```typescript
 interface Product {
   id: string | number;
@@ -136,6 +137,7 @@ interface Product {
 ## 🎨 Styling
 
 This project uses **Tailwind CSS v4** for styling with:
+
 - Responsive design utilities
 - Custom component styling
 - Dark mode support (if implemented)
@@ -144,7 +146,9 @@ This project uses **Tailwind CSS v4** for styling with:
 ## 🔍 Key Components
 
 ### useProducts Hook
+
 Central state management for:
+
 - Product data fetching
 - Search functionality
 - Category filtering
@@ -152,7 +156,9 @@ Central state management for:
 - Favorites management
 
 ### ProductCard Component
+
 Displays individual product information with:
+
 - Product image
 - Name and description
 - Price display
@@ -178,12 +184,14 @@ yarn preview
 ## 🧪 Development Guidelines
 
 ### Code Quality
+
 - ESLint configuration for code consistency
 - Prettier for code formatting
 - Husky for pre-commit hooks
 - TypeScript for type safety
 
 ### Best Practices
+
 - Component composition over inheritance
 - Custom hooks for reusable logic
 - Proper error boundaries
@@ -215,6 +223,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ### Getting Help
 
 If you encounter issues:
+
 1. Check the console for error messages
 2. Verify all environment variables are set
 3. Ensure your API endpoint is accessible

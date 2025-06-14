@@ -12,18 +12,19 @@ const Home = () => {
   return (
     <main className="container mx-auto px-2 py-10 md:px-4">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Products</h1>
-        <p className="text-gray-600">Discover our amazing collection of products</p>
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Products</h1>
+        <p className="text-gray-600">
+          Discover our amazing collection of products
+        </p>
       </div>
 
       {/* Enhanced filter section */}
-      <div className="mb-8 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Filter & Search</h2>
+      <div className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 className="mb-4 text-lg font-semibold text-gray-800">
+          Filter & Search
+        </h2>
         <div className="flex w-full flex-col gap-4 lg:flex-row">
-          <SearchBar
-            value={state.search}
-            onChange={setSearch}
-          />
+          <SearchBar value={state.search} onChange={setSearch} />
           <CategorySelect
             value={state.category}
             onChange={setCategory}

@@ -17,13 +17,13 @@ const CategorySelect: FunctionComponent<CategorySelectProps> = ({
   categories,
 }) => {
   return (
-    <div className="flex flex-col gap-2 min-w-[200px]">
+    <div className="flex min-w-[200px] flex-col gap-2">
       <label htmlFor="category" className="text-sm font-medium text-gray-700">
         Category
       </label>
       <select
         id="category"
-        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-colors bg-white"
+        className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
         value={value}
         onChange={e => onChange(e.target.value)}
       >
@@ -37,4 +37,4 @@ const CategorySelect: FunctionComponent<CategorySelectProps> = ({
   );
 };
 
-export default CategorySelect; 
+export default CategorySelect;
