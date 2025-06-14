@@ -25,7 +25,7 @@ A modern React application for browsing and managing products with advanced filt
 - **State Management**: React Hooks (useState, useEffect, useReducer)
 - **Icons**: Lucide React
 - **Code Quality**: ESLint, Prettier, Husky
-- **Utility Libraries**: 
+- **Utility Libraries**:
   - `clsx` and `tailwind-merge` for conditional styling
   - `class-variance-authority` for component variants
 
@@ -143,26 +143,31 @@ src/
 ## 🎯 Design Decisions
 
 ### State Management
+
 - **useReducer for Complex State**: Used `useReducer` instead of multiple `useState` hooks for managing the complex product state (filtering, sorting, searching)
 - **Custom Hooks**: Separated concerns by creating `useProducts` for product logic and `usePersistedState` for localStorage functionality
 - **Centralized State**: All product-related state is managed in one place for better maintainability
 
 ### API Integration
+
 - **Service Layer**: Created a separate service layer (`products.service.ts`) for API calls to keep components clean
 - **Axios Configuration**: Centralized API configuration in `lib/api.ts` for consistent request handling
 - **Error Handling**: Comprehensive error handling at both service and component levels
 
 ### Component Architecture
+
 - **Component Composition**: Used component composition over prop drilling
 - **Reusable Components**: Created reusable form components (`SearchBar`, `CategorySelect`, `SortSelect`)
 - **Loading States**: Implemented skeleton components for better UX during loading
 
 ### Styling Approach
+
 - **Tailwind CSS**: Chose Tailwind for utility-first styling and consistent design system
 - **Responsive Design**: Mobile-first approach with responsive grid layouts
 - **Component Variants**: Used utility functions for conditional styling
 
 ### Data Persistence
+
 - **localStorage**: Implemented favorites persistence using localStorage with a custom hook
 - **Type Safety**: Full TypeScript support for all data structures and API responses
 
@@ -202,6 +207,7 @@ interface Product {
 ### useProducts Hook
 
 Central state management for:
+
 - Product data fetching
 - Real-time search functionality (searches by title)
 - Category filtering (Electronics, Jewelery, Men's/Women's Clothing)
@@ -211,6 +217,7 @@ Central state management for:
 ### usePersistedState Hook
 
 Generic hook for localStorage persistence:
+
 - Automatic serialization/deserialization
 - Type-safe implementation
 - Used for favorites persistence
@@ -218,15 +225,17 @@ Generic hook for localStorage persistence:
 ### ProductCard Component
 
 Displays individual product information with:
+
 - Product image with fallback
 - Title and description
 - Price display
 - Favorite toggle functionality
-- Responsive layout 
+- Responsive layout
 
 ## 🔄 What I'd Improve With More Time
 
 ### Testing
+
 - **Unit Tests**: Write comprehensive unit tests for custom hooks (`useProducts`, `usePersistedState`)
 - **Component Tests**: Add React Testing Library tests for all components
 - **Integration Tests**: Test the complete user flows (search, filter, favorite)
@@ -235,6 +244,7 @@ Displays individual product information with:
 - **Docker**: Add Docker support for easy deployment
 
 ### UI/UX Improvements
+
 - **Enhanced Styling**: Improve the overall visual design with better color schemes, shadows, and animations
 - **Advanced Animations**: Add smooth transitions for filtering, sorting, and favorites
 - **Better Loading States**: More sophisticated loading animations and progressive loading
@@ -243,6 +253,7 @@ Displays individual product information with:
 - **Mobile UX**: Enhanced mobile experience with touch gestures and better responsive breakpoints
 
 ### Additional Features
+
 - **Product Details Page**: Dedicated page for individual product details
 - **Advanced Filtering**: Filter by price range, ratings, and multiple categories
 - **Search Enhancements**: Fuzzy search, search history, and search suggestions
@@ -251,6 +262,7 @@ Displays individual product information with:
 - **Favorites Management**: Dedicated favorites page with bulk actions
 
 ### Performance Optimizations
+
 - **Code Splitting**: Implement route-based code splitting
 - **Memoization**: Add React.memo and useMemo where appropriate
 - **Virtual Scrolling**: For handling large product lists
