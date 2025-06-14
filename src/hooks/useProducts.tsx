@@ -1,32 +1,32 @@
 import { getAll } from '@/services/products.service';
-import type { Product, ProductWithIsFavorite, Sort } from '@/types/products';
+import type { Product, Sort } from '@/types/products';
 import { useEffect, useReducer } from 'react';
+import { usePersistedState } from './usePersistedState';
 
 type Action =
   | {
       type: 'SET_INITIAL_PRODUCTS';
-      payload: (Product & { isFavorite: boolean })[];
+      payload: Product[];
     }
   | {
       type: 'SET_CATEGORY';
-      payload: { category: string; products: ProductWithIsFavorite[] };
+      payload: { category: string; products: Product[] };
     }
   | {
       type: 'SET_SORT';
-      payload: { sort: Sort; products: ProductWithIsFavorite[] };
+      payload: { sort: Sort; products: Product[] };
     }
   | {
       type: 'SET_SEARCH';
-      payload: { search: string; products: ProductWithIsFavorite[] };
+      payload: { search: string; products: Product[] };
     }
-  | { type: 'SET_FAVORITES'; payload: ProductWithIsFavorite }
   | { type: 'SET_ERROR'; payload: string }
   | { type: 'SET_IS_ERROR'; payload: boolean }
   | { type: 'SET_IS_LOADING'; payload: boolean };
 
 type State = {
-  initialProducts: ProductWithIsFavorite[];
-  products: ProductWithIsFavorite[];
+  initialProducts: Product[];
+  products: Product[];
   category: string;
   search: string;
   sort: Sort;
@@ -47,6 +47,11 @@ const INITIAL_STATE: State = {
 };
 
 const useProducts = () => {
+  const [favorites, setFavorites] = usePersistedState<number[]>(
+    'favorites',
+    [],
+  );
+
   const [state, dispatch] = useReducer(
     (state: State, action: Action): State => {
       switch (action.type) {
@@ -74,16 +79,6 @@ const useProducts = () => {
             search: action.payload.search,
             products: action.payload.products,
           };
-        case 'SET_FAVORITES':
-          return {
-            ...state,
-            products: state.products.map(p =>
-              p.id === action.payload.id ? action.payload : p,
-            ),
-            initialProducts: state.initialProducts.map(p =>
-              p.id === action.payload.id ? action.payload : p,
-            ),
-          };
         case 'SET_ERROR':
           return { ...state, error: action.payload };
         case 'SET_IS_ERROR':
@@ -102,7 +97,7 @@ const useProducts = () => {
       .then(products => {
         dispatch({
           type: 'SET_INITIAL_PRODUCTS',
-          payload: products.map(product => ({ ...product, isFavorite: false })),
+          payload: products,
         });
       })
       .catch(error => {
@@ -115,7 +110,7 @@ const useProducts = () => {
   }, []);
 
   const applyFiltersAndSort = (
-    products: ProductWithIsFavorite[],
+      products: Product[],
     category: string,
     search: string,
     sort: Sort,
@@ -196,11 +191,12 @@ const useProducts = () => {
   };
 
   const toggleFavorite = (product: Product) => {
-    const updatedProduct = {
-      ...product,
-      isFavorite: !state.products.find(p => p.id === product.id)?.isFavorite,
-    };
-    dispatch({ type: 'SET_FAVORITES', payload: updatedProduct });
+    setFavorites(prev => {
+      if (prev.includes(product.id)) {
+        return prev.filter(id => id !== product.id);
+      }
+      return [...prev, product.id];
+    });
   };
 
   return {
@@ -209,6 +205,7 @@ const useProducts = () => {
     setSort,
     setSearch,
     toggleFavorite,
+    favorites,
   };
 };
 

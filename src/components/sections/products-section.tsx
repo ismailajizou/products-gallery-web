@@ -1,14 +1,15 @@
-import type { Product, ProductWithIsFavorite } from '@/types/products';
+import type { Product } from '@/types/products';
 import type { FunctionComponent } from 'react';
 import CardSkeleton from '../card-skeleton';
 import ProductCard from '../product-card';
 
 interface ProductsSectionProps {
-  products: ProductWithIsFavorite[] | undefined;
+  products: Product[] | undefined;
   isLoading: boolean;
   isError: boolean;
   error: string | null;
   toggleFavorite: (product: Product) => void;
+  favorites: number[];
 }
 
 const ProductsSection: FunctionComponent<ProductsSectionProps> = ({
@@ -17,6 +18,7 @@ const ProductsSection: FunctionComponent<ProductsSectionProps> = ({
   isError,
   error,
   toggleFavorite,
+  favorites,
 }) => {
   if (isLoading) {
     return (
@@ -43,6 +45,7 @@ const ProductsSection: FunctionComponent<ProductsSectionProps> = ({
           key={product.id}
           product={product}
           toggleFavorite={toggleFavorite}
+          isFavorite={favorites.includes(product.id)}
         />
       ))}
     </div>

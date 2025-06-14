@@ -1,16 +1,18 @@
 import { cn } from '@/lib/utils';
-import type { ProductWithIsFavorite } from '@/types/products';
+import type { Product } from '@/types/products';
 import { Heart } from 'lucide-react';
 import type { FunctionComponent } from 'react';
 
 interface ProductCardProps {
-  product: ProductWithIsFavorite;
-  toggleFavorite: (product: ProductWithIsFavorite) => void;
+  product: Product;
+  toggleFavorite: (product: Product) => void;
+  isFavorite: boolean;
 }
 
 const ProductCard: FunctionComponent<ProductCardProps> = ({
   product,
   toggleFavorite,
+  isFavorite,
 }) => {
   return (
     <div className="relative max-w-sm rounded-lg bg-white p-4 shadow-md transition-shadow hover:shadow-lg">
@@ -22,7 +24,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({
         <Heart
           className={cn(
             'h-5 w-5 text-red-500 transition-colors',
-            product.isFavorite && 'fill-red-500',
+            isFavorite && 'fill-red-500',
           )}
         />
       </button>

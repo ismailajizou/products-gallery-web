@@ -6,7 +6,7 @@ import useProducts from '@/hooks/useProducts';
 import { CATEGORIES, SORT_OPTIONS } from '@/lib/constants';
 
 const Home = () => {
-  const { state, setCategory, setSort, setSearch, toggleFavorite } =
+  const { state, setCategory, setSort, setSearch, toggleFavorite, favorites } =
     useProducts();
 
   return (
@@ -45,6 +45,7 @@ const Home = () => {
         isError={state.isError}
         error={state.error}
         toggleFavorite={toggleFavorite}
+        favorites={favorites}
       />
     </main>
   );
