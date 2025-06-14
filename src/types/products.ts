@@ -13,8 +13,4 @@ export interface Product {
   };
 }
 
-export interface ProductWithIsFavorite extends Product {
-  isFavorite: boolean;
-}
-
 export type Sort = (typeof SORT_OPTIONS)[number]['value'];
